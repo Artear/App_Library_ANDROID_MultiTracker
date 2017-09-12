@@ -56,7 +56,7 @@ dependencies {
 }
 
 
-group = publishedGroupId  // Maven Group ID for the artifact
+group = publishedGroupId
 
 install {
     repositories.mavenInstaller {
@@ -67,12 +67,10 @@ install {
                 groupId publishedGroupId
                 artifactId artifact
 
-                // Add your description here
                 name libraryName
                 description libraryDescription
                 url siteUrl
 
-                // Set your license
                 licenses {
                     license {
                         name licenseName
