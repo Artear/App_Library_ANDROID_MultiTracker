@@ -10,7 +10,7 @@ ext {
     libraryName = 'MultiTracker'
     artifact = 'multitracker'
 
-    libraryDescription = 'A library to send events to different agents'
+    libraryDescription = 'Elegant library to send events to different agents'
 
     siteUrl = 'https://github.com/Artear/App_Library_ANDROID_MultiTracker'
     gitUrl = 'https://github.com/Artear/App_Library_ANDROID_MultiTracker.git'
@@ -19,6 +19,9 @@ ext {
 
     developerId = 'artear'
     developerName = 'Artear Moviles'
+
+
+
 
     licenseName = 'The Apache Software License, Version 2.0'
     licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
