@@ -60,7 +60,7 @@ public class MultiTracker implements Tracker {
     }
 
     @Override
-    public void send(TrackerSend params) {
+    public void send(final TrackerSend params) {
         send(params, new ArrayList<>(trackers.keySet()));
     }
 
@@ -86,7 +86,7 @@ public class MultiTracker implements Tracker {
         trackers.clear();
     }
 
-    private void log(String logMessage) {
+    private void log(final String logMessage) {
         Log.d("MultiTracker", logMessage);
     }
 }
