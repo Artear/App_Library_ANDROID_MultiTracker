@@ -1,4 +1,4 @@
-package com.artear.multitracker;
+package com.artear.multitracker.contract.tracker;
 
 import android.content.Context;
 

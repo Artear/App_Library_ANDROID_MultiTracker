@@ -1,7 +1,7 @@
-package com.artear.multitracker;
+package com.artear.multitracker.contract.tracker;
 
 
-import com.artear.multitracker.sendcontract.TrackerSend;
+import com.artear.multitracker.contract.send.TrackerSend;
 
 public interface Tracker {
     void send(TrackerSend params);

@@ -4,7 +4,8 @@ package com.artear.multitracker;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.artear.multitracker.sendcontract.TrackerSend;
+import com.artear.multitracker.contract.send.TrackerSend;
+import com.artear.multitracker.contract.tracker.Tracker;
 
 import java.util.ArrayList;
 import java.util.HashMap;
