@@ -7,17 +7,39 @@
     tools:context="com.artear.multitrackerandroid.TrackerActivity">
 
     <Button
+        android:id="@+id/send_view_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/send_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/send_event_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/send_event"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/send_view_button"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp" />
+        app:layout_constraintRight_toRightOf="parent" />
 
+    <Button
+        android:id="@+id/send_exception_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/send_exception"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/send_event_button"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

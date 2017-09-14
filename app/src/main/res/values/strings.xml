@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">MultitrackerAndroid</string>
     <string name="send_event">Send Event</string>
+    <string name="send_view">Send View</string>
+    <string name="send_exception">Send Exception</string>
 </resources>
