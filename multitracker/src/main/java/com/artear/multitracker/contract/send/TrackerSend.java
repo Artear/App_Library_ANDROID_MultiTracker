@@ -15,6 +15,12 @@
  */
 package com.artear.multitracker.contract.send;
 
-
+/**
+ * Just an contract to makes a standard object to be sent. Can be use
+ * a {@link TrackerView}, {@link TrackerEvent}, {@link TrackerException}
+ * or create your own "TrackerObject".
+ *
+ * @see com.artear.multitracker.contract.tracker.Tracker Tracker
+ */
 public interface TrackerSend {
 }

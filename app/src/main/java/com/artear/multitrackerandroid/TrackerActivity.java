@@ -6,15 +6,11 @@ import android.view.View;
 import android.widget.Button;
 
 import com.artear.multitracker.MultiTracker;
-import com.artear.multitracker.contract.tracker.Tracker;
 import com.artear.multitrackerandroid.trackers.AnalyticsTracker;
 import com.artear.multitrackerandroid.trackers.OtherCustomTracker;
 import com.artear.multitrackerandroid.trackers.type.event.MyEvent;
 import com.artear.multitrackerandroid.trackers.type.exception.MyException;
 import com.artear.multitrackerandroid.trackers.type.view.MyView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.artear.multitrackerandroid.trackers.type.exception.MyException.ErrorCode.INTERNAL_ERROR;
 
@@ -23,7 +19,7 @@ public class TrackerActivity extends AppCompatActivity {
     private MyView testView = new MyView("Main View");
     private MyEvent testEventOne = new MyEvent("Event One");
     private MyEvent testEventTwo = new MyEvent("Event Two");
-    private MyException testException = new MyException(INTERNAL_ERROR , "Error :(");
+    private MyException testException = new MyException(INTERNAL_ERROR, "Error :(");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +31,9 @@ public class TrackerActivity extends AppCompatActivity {
         sendViewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                List<Class<? extends Tracker>> justSomeTrackers = new ArrayList<>();
-                justSomeTrackers.add(AnalyticsTracker.class);
-
-                MultiTracker.getInstance().send(testView, justSomeTrackers);
+                //Only send to an specific tracker
+                MultiTracker.getInstance().send(testView, new String[]{
+                        AnalyticsTracker.class.getName()});
             }
         });
 
@@ -48,11 +42,8 @@ public class TrackerActivity extends AppCompatActivity {
         sendEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                List<Class<? extends Tracker>> justSomeTrackers = new ArrayList<>();
-                justSomeTrackers.add(AnalyticsTracker.class);
-                justSomeTrackers.add(OtherCustomTracker.class);
-
+                String[] justSomeTrackers = new String[]{AnalyticsTracker.class.getName(),
+                        OtherCustomTracker.class.getName()};
                 MultiTracker.getInstance().send(testEventOne, justSomeTrackers);
                 MultiTracker.getInstance().send(testEventTwo, justSomeTrackers);
             }
@@ -63,8 +54,7 @@ public class TrackerActivity extends AppCompatActivity {
         sendExceptionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //Send all tracker registered
+                //Send to all tracker registered
                 MultiTracker.getInstance().send(testException);
             }
         });

@@ -4,14 +4,13 @@ import android.content.Context;
 import android.util.Log;
 
 import com.artear.multitracker.contract.send.TrackerSend;
-import com.artear.multitracker.contract.tracker.ContextTracker;
+import com.artear.multitracker.ContextTracker;
 
 
-public class AnalyticsTracker implements ContextTracker {
+public class AnalyticsTracker extends ContextTracker {
 
-    @Override
-    public void init(Context context) {
-
+    public AnalyticsTracker(Context context){
+        super(context);
     }
 
     @Override

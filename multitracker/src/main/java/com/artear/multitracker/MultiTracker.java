@@ -22,15 +22,21 @@ import android.util.Log;
 import com.artear.multitracker.contract.send.TrackerSend;
 import com.artear.multitracker.contract.tracker.Tracker;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class MultiTracker implements Tracker {
+import static android.R.attr.type;
+
+/**
+ * A simple class for track and propagate to all trackers registered.
+ * To send a {@link TrackerSend} each tracker registered must implements
+ * {@link Tracker Tracker}.
+ *
+ */
+public final class MultiTracker implements Tracker {
 
     private static MultiTracker instance;
-    private Map<Class<? extends Tracker>, Tracker> trackers = new HashMap<>();
+    private Map<String, Tracker> trackers = new HashMap<>();
 
     public static MultiTracker getInstance() {
         if (instance == null) {
@@ -39,29 +45,54 @@ public class MultiTracker implements Tracker {
         return instance;
     }
 
-    public void register(final Tracker tracker) {
-        Class<? extends Tracker> type = tracker.getClass();
-        if (trackers.keySet().contains(type)) {
-            log("Tracker type currently exists: " + type);
-        }
-        trackers.put(tracker.getClass(), tracker);
+    /**
+     * MultiTracker is a singleton, its creation must be through {@link #getInstance()} .
+     */
+    private MultiTracker() {
     }
 
-    public void send(final TrackerSend params,
-                     @NonNull final List<Class<? extends Tracker>> trackersTypes) {
+    /**
+     * It is used to register a tracker and send to it a {@link TrackerSend} in the future.
+     *
+     * @param tracker The tracker to deliver the send message.
+     */
+    public void register(final Tracker tracker) {
+        if (trackers.containsKey(tracker.keyName())) {
+            log("Tracker type currently exists: " + type);
+        }
+        trackers.put(tracker.keyName(), tracker);
+    }
 
-        for (Class<? extends Tracker> type : trackersTypes) {
-            if (trackers.containsKey(type)) {
-                trackers.get(type).send(params);
+    /**
+     * Use this method for send only to some specific trackers. For send to all trackers
+     * use {@link #send(TrackerSend)}.
+     *
+     * @param param The object to be sent.
+     * @param trackerKeys The keys that represent to which tracker will be delivered.
+     */
+    public void send(final TrackerSend param, @NonNull final String[] trackerKeys) {
+        for (String keyName : trackerKeys) {
+            if (trackers.containsKey(keyName)) {
+                trackers.get(keyName).send(param);
             } else {
-                log("Tracker Protocol Unknown: " + type);
+                log("Tracker keyName Unknown: " + type);
             }
         }
     }
 
+    /**
+     * Use this for send to all trackers registered.
+     *
+     * @param params The object to be sent.
+     */
     @Override
     public void send(final TrackerSend params) {
-        send(params, new ArrayList<>(trackers.keySet()));
+        send(params, trackers.keySet().toArray(new String[trackers.size()]));
+    }
+
+    @Override
+    public String keyName() {
+        return getClass().getName();
     }
 
     @Override

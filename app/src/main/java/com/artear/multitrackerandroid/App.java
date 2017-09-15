@@ -12,9 +12,8 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
-        MultiTracker multiTracker = MultiTracker.getInstance();
-        multiTracker.register(new AnalyticsTracker());
-        multiTracker.register(new OtherCustomTracker());
+        //In your app register all trackers
+        MultiTracker.getInstance().register(new AnalyticsTracker(getBaseContext()));
+        MultiTracker.getInstance().register(new OtherCustomTracker(getBaseContext()));
     }
 }
