@@ -24,9 +24,10 @@ import com.artear.multitracker.contract.send.TrackerSend;
  * <p>
  * For example: {@link com.artear.multitracker.MultiTracker MultiTracker} or
  * {@link com.artear.multitracker.ContextTracker ContextTracker}.
- *
  */
 public interface Tracker {
+
+    void send(TrackerSend params);
 
     void onResume();
 
@@ -35,6 +36,4 @@ public interface Tracker {
     void onDestroy();
 
     String keyName();
-
-    void send(TrackerSend params);
 }
