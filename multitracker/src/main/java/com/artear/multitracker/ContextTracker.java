@@ -26,12 +26,7 @@ import com.artear.multitracker.contract.tracker.Tracker;
  */
 public abstract class ContextTracker implements Tracker {
 
-    /**
-     * This constructor needs a context for the classes that extends from this.
-     *
-     * @param context The context associated
-     */
-    protected ContextTracker(final Context context){
+    public ContextTracker(final Context context){
     }
 
     /**
