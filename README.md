@@ -10,12 +10,12 @@ via Maven:
 <dependency>
   <groupId>com.artear.multitracker</groupId>
   <artifactId>multitracker</artifactId>
-  <version>0.0.3</version>
+  <version>0.0.4</version>
 </dependency>
 ```
 or Gradle:
 ```groovy
-compile 'com.artear.multitracker:multitracker:0.0.3'
+compile 'com.artear.multitracker:multitracker:0.0.4'
 ```
 Test Lib requires at minimum Java 7 or Android 4.1.
 
