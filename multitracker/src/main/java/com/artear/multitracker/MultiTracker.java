@@ -24,6 +24,8 @@ import com.artear.multitracker.contract.tracker.Tracker;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static android.R.attr.type;
 
@@ -31,12 +33,12 @@ import static android.R.attr.type;
  * A simple class for track and propagate to all trackers registered.
  * To send a {@link TrackerSend} each tracker registered must implements
  * {@link Tracker Tracker}.
- *
  */
 public final class MultiTracker implements Tracker {
 
     private static MultiTracker instance;
     private Map<String, Tracker> trackers = new HashMap<>();
+    private ExecutorService executor = Executors.newSingleThreadExecutor();
 
     public static MultiTracker getInstance() {
         if (instance == null) {
@@ -67,17 +69,22 @@ public final class MultiTracker implements Tracker {
      * Use this method for send only to some specific trackers. For send to all trackers
      * use {@link #send(TrackerSend)}.
      *
-     * @param param The object to be sent.
+     * @param param       The object to be sent.
      * @param trackerKeys The keys that represent to which tracker will be delivered.
      */
     public void send(final TrackerSend param, @NonNull final String[] trackerKeys) {
-        for (String keyName : trackerKeys) {
-            if (trackers.containsKey(keyName)) {
-                trackers.get(keyName).send(param);
-            } else {
-                log("Tracker keyName Unknown: " + type);
+        executor.submit(new Runnable() {
+            @Override
+            public void run() {
+                for (String keyName : trackerKeys) {
+                    if (trackers.containsKey(keyName)) {
+                        trackers.get(keyName).send(param);
+                    } else {
+                        log("Tracker keyName Unknown: " + type);
+                    }
+                }
             }
-        }
+        });
     }
 
     /**
@@ -97,22 +104,37 @@ public final class MultiTracker implements Tracker {
 
     @Override
     public void onResume() {
-        for (Tracker tracker : trackers.values()) {
-            tracker.onResume();
+        for (final Tracker tracker : trackers.values()) {
+            executor.submit(new Runnable() {
+                @Override
+                public void run() {
+                    tracker.onResume();
+                }
+            });
         }
     }
 
     @Override
     public void onPause() {
-        for (Tracker tracker : trackers.values()) {
-            tracker.onPause();
+        for (final Tracker tracker : trackers.values()) {
+            executor.submit(new Runnable() {
+                @Override
+                public void run() {
+                    tracker.onPause();
+                }
+            });
         }
     }
 
     @Override
     public void onDestroy() {
-        for (Tracker tracker : trackers.values()) {
-            tracker.onDestroy();
+        for (final Tracker tracker : trackers.values()) {
+            executor.submit(new Runnable() {
+                @Override
+                public void run() {
+                    tracker.onDestroy();
+                }
+            });
         }
         trackers.clear();
     }
