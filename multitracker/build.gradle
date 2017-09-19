@@ -15,7 +15,7 @@ ext {
     siteUrl = 'https://github.com/Artear/App_Library_ANDROID_MultiTracker'
     gitUrl = 'https://github.com/Artear/App_Library_ANDROID_MultiTracker.git'
 
-    libraryVersion = '0.0.4'
+    libraryVersion = '0.0.5'
 
     developerId = 'artear'
     developerName = 'Artear Moviles'
