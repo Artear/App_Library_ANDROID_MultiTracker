@@ -40,17 +40,17 @@ public final class MultiTracker implements Tracker {
     private Map<String, Tracker> trackers = new HashMap<>();
     private ExecutorService executor = Executors.newSingleThreadExecutor();
 
+    /**
+     * MultiTracker is a singleton, its creation must be through {@link #getInstance()} .
+     */
+    private MultiTracker() {
+    }
+
     public static MultiTracker getInstance() {
         if (instance == null) {
             instance = new MultiTracker();
         }
         return instance;
-    }
-
-    /**
-     * MultiTracker is a singleton, its creation must be through {@link #getInstance()} .
-     */
-    private MultiTracker() {
     }
 
     /**
@@ -73,18 +73,18 @@ public final class MultiTracker implements Tracker {
      * @param trackerKeys The keys that represent to which tracker will be delivered.
      */
     public void send(final TrackerSend param, @NonNull final String[] trackerKeys) {
-        executor.submit(new Runnable() {
-            @Override
-            public void run() {
-                for (String keyName : trackerKeys) {
-                    if (trackers.containsKey(keyName)) {
+        for (final String keyName : trackerKeys) {
+            if (trackers.containsKey(keyName)) {
+                executor.submit(new Runnable() {
+                    @Override
+                    public void run() {
                         trackers.get(keyName).send(param);
-                    } else {
-                        log("Tracker keyName Unknown: " + type);
                     }
-                }
+                });
+            } else {
+                log("Tracker unknown keyName: " + keyName);
             }
-        });
+        }
     }
 
     /**
