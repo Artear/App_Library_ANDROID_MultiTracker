@@ -15,7 +15,7 @@ ext {
     siteUrl = 'https://github.com/Artear/App_Library_ANDROID_MultiTracker'
     gitUrl = 'https://github.com/Artear/App_Library_ANDROID_MultiTracker.git'
 
-    libraryVersion = '0.0.5'
+    libraryVersion = '0.0.6'
 
     developerId = 'artear'
     developerName = 'Artear Moviles'
@@ -27,10 +27,10 @@ ext {
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "26.0.1"
+    buildToolsVersion "26.0.2"
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 10
         targetSdkVersion 25
         versionCode 2
         versionName libraryVersion
