@@ -26,8 +26,8 @@ android {
 }
 
 dependencies {
-    compile project(path: ':multitracker')
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':multitracker')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //Test
     testImplementation 'junit:junit:4.12'
