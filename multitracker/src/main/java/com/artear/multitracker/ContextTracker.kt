@@ -13,28 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.artear.multitracker;
+package com.artear.multitracker
 
-import android.content.Context;
+import android.content.Context
 
-import com.artear.multitracker.contract.tracker.Tracker;
+import com.artear.multitracker.contract.tracker.Tracker
 
 /**
- * ContextTracker is a tracker which needs a {@link Context} for the implementation.
- * <p>
+ * ContextTracker is a tracker which needs a [Context] for the implementation.
+ *
+ *
  * Most common of libraries to track and receive events needs the context to initialize.
  */
-public abstract class ContextTracker implements Tracker {
-
-    public ContextTracker(final Context context){
-    }
+abstract class ContextTracker(val context: Context) : Tracker {
 
     /**
      * By default the key used is the class name. You can override this
      * and use the key would you prefers
      */
-    @Override
-    public String keyName() {
-        return getClass().getName();
+    override fun keyName(): String {
+        return javaClass.name
     }
 }

@@ -13,14 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.artear.multitracker.contract.send;
+package com.artear.multitracker.contract.tracker
+
+
+import com.artear.multitracker.contract.send.TrackerSend
 
 /**
- * Just an contract to makes a standard object to be sent. Can be use
- * a {@link TrackerView}, {@link TrackerEvent}, {@link TrackerException}
- * or create your own "TrackerObject".
+ * A basic interface which can send a [TrackerSend] object and receive
+ * the lifecycle events of a traditional component. Also define a key to identify itself.
  *
- * @see com.artear.multitracker.contract.tracker.Tracker Tracker
+ *
+ * For example: [MultiTracker][com.artear.multitracker.MultiTracker] or
+ * [ContextTracker][com.artear.multitracker.ContextTracker].
  */
-public interface TrackerSend {
+interface Tracker {
+
+    fun send(params: TrackerSend)
+
+    fun onResume()
+
+    fun onPause()
+
+    fun onDestroy()
+
+    fun keyName(): String
 }

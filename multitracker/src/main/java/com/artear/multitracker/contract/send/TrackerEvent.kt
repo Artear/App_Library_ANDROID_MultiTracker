@@ -13,27 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.artear.multitracker.contract.tracker;
+package com.artear.multitracker.contract.send
 
 
-import com.artear.multitracker.contract.send.TrackerSend;
-
-/**
- * A basic interface which can send a {@link TrackerSend} object and receive
- * the lifecycle events of a traditional component. Also define a key to identify itself.
- * <p>
- * For example: {@link com.artear.multitracker.MultiTracker MultiTracker} or
- * {@link com.artear.multitracker.ContextTracker ContextTracker}.
- */
-public interface Tracker {
-
-    void send(TrackerSend params);
-
-    void onResume();
-
-    void onPause();
-
-    void onDestroy();
-
-    String keyName();
-}
+interface TrackerEvent : TrackerSend
