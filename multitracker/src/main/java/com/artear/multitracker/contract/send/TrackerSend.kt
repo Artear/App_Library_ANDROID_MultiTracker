@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Artear S.A.
+ * Copyright 2018 Artear S.A.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,8 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.artear.multitracker.contract.send;
+package com.artear.multitracker.contract.send
 
-
-public interface TrackerException extends TrackerSend {
-}
+/**
+ * Just an contract to makes a standard object to be sent. Can be use
+ * a [TrackerView], [TrackerEvent], [TrackerException]
+ * or create your own "TrackerObject".
+ *
+ * @see com.artear.multitracker.contract.tracker.Tracker Tracker
+ */
+interface TrackerSend

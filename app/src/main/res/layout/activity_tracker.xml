@@ -6,7 +6,7 @@
     tools:context="com.artear.multitrackerandroid.TrackerActivity">
 
     <Button
-        android:id="@+id/send_view_button"
+        android:id="@+id/sendViewButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
@@ -15,20 +15,20 @@
         android:text="@string/send_view" />
 
     <Button
-        android:id="@+id/send_event_button"
+        android:id="@+id/sendEventButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/send_view_button"
+        android:layout_below="@+id/sendViewButton"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/send_event" />
 
     <Button
-        android:id="@+id/send_exception_button"
+        android:id="@+id/sendExceptionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/send_event_button"
+        android:layout_below="@+id/sendEventButton"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="16dp"
