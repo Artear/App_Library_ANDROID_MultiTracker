@@ -10,19 +10,19 @@ via Maven:
 <dependency>
   <groupId>com.artear.multitracker</groupId>
   <artifactId>multitracker</artifactId>
-  <version>0.1.1</version>
+  <version>0.1.2</version>
 </dependency>
 ```
 or Gradle:
 ```groovy
-compile 'com.artear.multitracker:multitracker:0.1.1'
+compile 'com.artear.multitracker:multitracker:0.1.2'
 ```
 Test Lib requires at minimum Java 7 or Android 4.1.
 
 License
 =======
 
-    Copyright 2017 Artear S.A.
+    Copyright 2018 Artear S.A.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
