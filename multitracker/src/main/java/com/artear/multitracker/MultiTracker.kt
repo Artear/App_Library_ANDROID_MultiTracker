@@ -15,10 +15,10 @@
  */
 package com.artear.multitracker
 
-import android.util.Log
 import com.artear.multitracker.MultiTracker.Companion.instance
 import com.artear.multitracker.contract.send.TrackerSend
 import com.artear.multitracker.contract.tracker.Tracker
+import com.artear.tools.android.log.logD
 import java.util.concurrent.Executors
 
 /**
@@ -43,7 +43,7 @@ class MultiTracker private constructor() : Tracker {
      */
     fun register(tracker: Tracker) {
         if (trackers.containsKey(tracker.keyName())) {
-            log("Tracker type currently exists: ${tracker.keyName()}")
+            logD { "- MultiTracker - Tracker type currently exists: ${tracker.keyName()}" }
         }
         trackers[tracker.keyName()] = tracker
     }
@@ -61,7 +61,7 @@ class MultiTracker private constructor() : Tracker {
             if (trackers.containsKey(it)) {
                 executor.submit { trackers[it]?.send(param) }
             } else {
-                log("Tracker unknown keyName: $it")
+                logD { "- MultiTracker - Tracker unknown keyName: $it " }
             }
         }
     }
@@ -90,10 +90,6 @@ class MultiTracker private constructor() : Tracker {
 
     override fun keyName(): String {
         return javaClass.name
-    }
-
-    private fun log(logMessage: String) {
-        Log.d("MultiTracker", logMessage)
     }
 
 }

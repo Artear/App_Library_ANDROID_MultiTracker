@@ -1,7 +1,7 @@
 package com.artear.multitrackerandroid
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.artear.multitracker.MultiTracker
 import com.artear.multitrackerandroid.trackers.AnalyticsTracker
 import com.artear.multitrackerandroid.trackers.OtherCustomTracker
