@@ -38,7 +38,7 @@ buildscript {
         appCompatVersion = '1.0.2'
 
         // Annotations
-        annotationsVersion = '1.0.0'
+        annotationsVersion = '1.0.2'
 
         // ------------- Artear -------------
         // Tools
