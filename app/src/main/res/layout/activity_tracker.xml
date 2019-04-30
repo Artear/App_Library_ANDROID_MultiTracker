@@ -10,8 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="16dp"
+        android:layout_marginRight="8dp"
         android:text="@string/send_view" />
 
     <Button
@@ -20,8 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/sendViewButton"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="16dp"
+        android:layout_marginRight="8dp"
         android:text="@string/send_event" />
 
     <Button
@@ -30,8 +30,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/sendEventButton"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="16dp"
+        android:layout_marginRight="8dp"
         android:text="@string/send_exception" />
 
 </RelativeLayout>
